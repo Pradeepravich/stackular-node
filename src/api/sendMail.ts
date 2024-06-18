@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const handler = async (req: VercelRequest, res: VercelResponse) => {
+    
   const { name, email, message } = req.body;
 
   const transporter = nodemailer.createTransport({

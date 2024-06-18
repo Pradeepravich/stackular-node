@@ -2,13 +2,13 @@
     "version": 2,
     "builds": [
       {
-        "src": "src/api/**/*.ts",
+        "src": "src/api/sendMail.ts",
         "use": "@vercel/node"
       }
     ],
     "routes": [
       {
-        "src": "/src/api/sendMail",
+        "src": "/api/sendmail",
         "dest": "/src/api/sendMail.ts"
       }
     ]
