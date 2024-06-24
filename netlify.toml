@@ -1,5 +1,9 @@
 [build]
   functions = "functions"
+  base = "/"
+
+[functions]
+  directory = "functions"
 
 [[redirects]]
   from = "/api/*"
