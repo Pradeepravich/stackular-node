@@ -1,9 +1,9 @@
 {
   "name": "stackular-node",
   "version": "1.0.0",
-  "main": "src/sendMail.ts",
+  "main": "functions/sendMail.ts",
   "scripts": {
-    "start": "ts-node src/sendMail.ts",
+    "start": "ts-node functions/sendMail.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

@@ -1,12 +1,10 @@
-import { VercelRequest, VercelResponse } from '@vercel/node';
-import nodemailer from 'nodemailer';
-import dotenv from 'dotenv';
+const nodemailer = require('nodemailer');
+const dotenv = require('dotenv');
 
 dotenv.config();
 
-const handler = async (req: VercelRequest, res: VercelResponse) => {
-    
-  const { name, email, message } = req.body;
+exports.handler = async (event, context) => {
+  const { name, email, message } = JSON.parse(event.body);
 
   const transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -25,11 +23,15 @@ const handler = async (req: VercelRequest, res: VercelResponse) => {
 
   try {
     const info = await transporter.sendMail(mailOptions);
-    res.status(200).json({ message: 'Email sent successfully', info });
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ message: 'Email sent successfully', info }),
+    };
   } catch (error) {
     console.error('Error sending email:', error);
-    res.status(500).json({ message: 'Failed to send email', error });
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ message: 'Failed to send email', error }),
+    };
   }
 };
-
-export default handler;
