@@ -1,6 +1,8 @@
 [build]
   functions = "functions"
   base = "/"
+  publish = "dist"  # Directory to publish (if applicable, for static files)
+  command = "npm run build"
 
 [functions]
   directory = "functions"
