@@ -1,10 +1,11 @@
-const nodemailer = require('nodemailer');
-const dotenv = require('dotenv');
+import { Handler } from "@netlify/functions";
+import nodemailer from "nodemailer";
+import dotenv from "dotenv";
 
 dotenv.config();
 
-exports.handler = async (event, context) => {
-  const { name, email, message } = JSON.parse(event.body);
+export const handler: Handler = async (event, context) => {
+  const { name, email, message } = JSON.parse(event.body as string);
 
   const transporter = nodemailer.createTransport({
     service: 'gmail',
