@@ -1,7 +1,7 @@
 {
   "name": "stackular-node",
   "version": "1.0.0",
-  "main": "functions/sendMail.ts",
+  "main": "dist/sendMail.js",
   "scripts": {
     "build": "tsc",
     "start": "ts-node functions/sendMail.ts",
@@ -12,13 +12,13 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "@netlify/functions": "^2.7.0",
+    "@netlify/functions": "^2.8.0",
     "@vercel/node": "^3.1.7",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
-    "nodemailer": "^6.9.13"
+    "nodemailer": "^6.9.14"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
@@ -26,6 +26,6 @@
     "@types/node": "^20.14.2",
     "@types/nodemailer": "^6.4.15",
     "ts-node": "^10.9.2",
-    "typescript": "^5.4.5"
+    "typescript": "^5.5.2"
   }
 }
