@@ -1,11 +1,25 @@
-// functions/sendMail.ts
-import { Handler} from '@netlify/functions';
+import { Handler, HandlerEvent, HandlerContext } from '@netlify/functions';
 import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
 
 dotenv.config();
 
-const handler: Handler = async (event) => {  
+const handler: any = async (event: HandlerEvent, context: HandlerContext) => {
+  // Handle CORS preflight request
+  if (event.httpMethod === 'OPTIONS') {
+    return {
+      statusCode: 200,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Methods': 'POST, OPTIONS',
+        'Content-Type': 'text/plain', // Ensure Content-Type is defined
+      },
+      body: '',
+    };
+  }
+
+  // Handle actual POST request
   try {
     const { name, email, message } = JSON.parse(event.body as string);
 

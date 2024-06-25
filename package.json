@@ -1,7 +1,7 @@
 {
   "name": "stackular-node",
   "version": "1.0.0",
-  "main": "dist/sendMail.js",
+  "main": "functions/sendMail.ts",
   "scripts": {
     "build": "tsc",
     "start": "ts-node functions/sendMail.ts",
