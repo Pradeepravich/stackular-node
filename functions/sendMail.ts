@@ -1,11 +1,11 @@
 // functions/sendMail.ts
-import { Handler } from '@netlify/functions';
+import { Handler} from '@netlify/functions';
 import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
 
 dotenv.config();
 
-const handler: Handler = async (event) => {
+const handler: Handler = async (event) => {  
   try {
     const { name, email, message } = JSON.parse(event.body as string);
 
@@ -28,12 +28,20 @@ const handler: Handler = async (event) => {
 
     return {
       statusCode: 200,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({ message: 'Email sent successfully', info }),
     };
   } catch (error) {
     console.error('Error sending email:', error);
     return {
       statusCode: 500,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({ message: 'Failed to send email', error }),
     };
   }
