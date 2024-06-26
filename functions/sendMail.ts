@@ -34,8 +34,12 @@ const handler: any = async (event: HandlerEvent, context: HandlerContext) => {
     const mailOptions = {
       from: process.env.SMTP_USER,
       to: process.env.EMAIL_TO,
-      subject: `Contact form submission from ${name}`,
-      text: message,
+      subject: `New Contact Form from ${name}`,
+      html: `
+          <p><b>Name:</b> ${name}</p>
+          <p><b>Email:</b> ${email}</p>
+          <p><b>Message:</b> ${message}</p>
+        `
     };
 
     const info = await transporter.sendMail(mailOptions);
