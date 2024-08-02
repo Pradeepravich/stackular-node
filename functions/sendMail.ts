@@ -5,7 +5,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const handler: any = async (event: HandlerEvent, context: HandlerContext) => {
-  // Handle CORS preflight request
+  // Handling CORS preflight request
   if (event.httpMethod === 'OPTIONS') {
     return {
       statusCode: 200,
